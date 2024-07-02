@@ -8,13 +8,13 @@ import NavBar from "./NavBar/NavBar";
 function App() {
   return (
     <div className="App">
-      <NavBar />
+      {/* <NavBar /> */}
       <div style={{ minHeight: "100vh" }}>
         {/* 요청된 경로로 페이지 이동 : 특정 컴포넌트 실행 */}
-        <Router>
+        <Router basename={process.env.PUBLIC_URL}>
           <Routes>
             <Route path="/" element={<LandingPage />} />
-            <Route path="/movie/:movieId" element={<Detail />} />
+            <Route path="/detail/:movieId" element={<Detail />} />
             <Route path="/items" element={<Items />} />
           </Routes>
         </Router>

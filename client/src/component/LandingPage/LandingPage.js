@@ -1,10 +1,11 @@
-import { Row, Button } from "antd";
+import { Button, Row } from "antd";
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { API_KEY, API_URL, IMAGE_BASE_URL } from "../Config";
-import GridCards from "../commons/GridCards";
-import MainImage from "./Section/MainImage";
+import NavBar from "../NavBar/NavBar";
 import AntCard from "../commons/AntCard";
+import MainImage from "./Section/MainImage";
 
 function LandingPage() {
   const navigate = useNavigate();
@@ -14,16 +15,17 @@ function LandingPage() {
 
   useEffect(() => {
     const page = 1;
-    fetchMovies(page);
+    axiosMovies(page);
   }, []);
 
   const loadMoreItems = () => {
     console.log("더보기 버튼 클릭!");
-    fetchMovies(CurrentPage + 1);
+    axiosMovies(CurrentPage + 1);
   };
 
   return (
     <>
+      <NavBar />
       <div style={{ width: "100%" }}>
         {/* Main Image */}
         {MainMovieImage && (
@@ -73,18 +75,18 @@ function LandingPage() {
     </>
   );
 
-  function fetchMovies(page) {
+  function axiosMovies(page) {
     const endpoint = `${API_URL}popular?api_key=${API_KEY}&language=en-US&page=${page}`;
 
-    fetch(endpoint)
-      .then((response) => response.json())
+    axios(endpoint)
+      .then((response) => response.data)
       .then((response) => {
         // console.log(response.page);
         // console.log(response.results);
+        console.log(response);
         setMovies([...Movies, ...response.results]);
         setMainMovieImage(response.results[0]);
         setCurrentPage(response.page);
-        console.log(Movies);
       });
   }
 }

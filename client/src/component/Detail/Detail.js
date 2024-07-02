@@ -3,8 +3,10 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { API_KEY, API_URL, IMAGE_BASE_URL } from "../Config";
 import MainImage from "../LandingPage/Section/MainImage";
-import MovieInfo from "./MovieInfo";
 import ImageList from "./ImageList";
+import MovieInfo from "./MovieInfo";
+import NavBar from "../NavBar/NavBar";
+import axios from "axios";
 
 const Detail = () => {
   const navigate = useNavigate();
@@ -32,16 +34,16 @@ const Detail = () => {
     // console.log(endpointCrew);
 
     //// [특정 영화 정보] 영화 아이디로 정보 요청
-    fetch(endpointInfo)
-      .then((response) => response.json())
+    axios(endpointInfo)
+      .then((response) => response.data)
       .then((obj) => {
         // console.log(obj);
         setMovie(obj);
       });
 
     //// [출연진] 영화 아이디로 정보 요청
-    fetch(endpointCrew)
-      .then((response) => response.json())
+    axios(endpointCrew)
+      .then((response) => response.data)
       .then((obj) => {
         console.log(obj);
         setCasts(obj.cast);
@@ -59,6 +61,7 @@ const Detail = () => {
 
   return (
     <>
+    <NavBar />
       {/* Header */}
       {Movie && (
         <MainImage

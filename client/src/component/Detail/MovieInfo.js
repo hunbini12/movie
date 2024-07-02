@@ -1,5 +1,5 @@
-import React, { Children } from 'react'
-import { Badge, Descriptions } from "antd";
+import { Descriptions } from "antd";
+import React from 'react';
 
 const MovieInfo = (props) => {
   // console.log(props)
