@@ -1,6 +1,6 @@
+import { Row } from "antd";
 import React from "react";
 import { IMAGE_BASE_URL } from "../Config";
-import { Row } from "antd";
 import AntCard from "../commons/AntCard";
 
 const ImageList = ({ targets }) => {

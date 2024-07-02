@@ -13,13 +13,10 @@ const { Header } = Layout;
 //   ),
 // }));
 
-// label: (<Link to="/"> Home </Link>),
-// label: <a href="/"> Home </a>,
-
 const items = [
   {
     key: "Home",
-    label: (<Link to="/"> Home </Link>),
+    label: <Link to="/"> Home </Link>,
   },
 ];
 

@@ -10,7 +10,6 @@ const AntCard = (props) => {
     return (
       <Col lg={4} md={6} sm={12} xs={24}>
         <div>
-          {/* <a href={`/movie/${props.movieId}`}> */}
           <Link to={`/detail/${props.movieId}`}>
             {" "}
             &nbsp;&nbsp;
@@ -23,7 +22,6 @@ const AntCard = (props) => {
             </Card>
           </Link>{" "}
           &nbsp;&nbsp;
-          {/* </a> */}
         </div>
       </Col>
     );

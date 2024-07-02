@@ -1,17 +1,16 @@
 import { Button, Divider } from "antd";
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { API_KEY, API_URL, IMAGE_BASE_URL } from "../Config";
 import MainImage from "../LandingPage/Section/MainImage";
+import NavBar from "../NavBar/NavBar";
 import ImageList from "./ImageList";
 import MovieInfo from "./MovieInfo";
-import NavBar from "../NavBar/NavBar";
-import axios from "axios";
 
 const Detail = () => {
   const navigate = useNavigate();
   const { movieId } = useParams();
-  // console.log(movieId);
 
   //// [state]========================================
   const [Movie, setMovie] = useState({});
@@ -26,18 +25,15 @@ const Detail = () => {
     //// [특정 영화 정보] URL
     // https://api.themoviedb.org/3/movie/11?api_key=API_KEY
     let endpointInfo = `${API_URL}${movieId}?api_key=${API_KEY}`;
-    // console.log(endpointInfo);
 
     //// [출연진] URL
     // https://api.themoviedb.org/3/movie/movie_id/credits?api_key=API_KEY;
     let endpointCrew = `${API_URL}${movieId}/credits?api_key=${API_KEY}`;
-    // console.log(endpointCrew);
 
     //// [특정 영화 정보] 영화 아이디로 정보 요청
     axios(endpointInfo)
       .then((response) => response.data)
       .then((obj) => {
-        // console.log(obj);
         setMovie(obj);
       });
 
@@ -61,7 +57,7 @@ const Detail = () => {
 
   return (
     <>
-    <NavBar />
+      <NavBar />
       {/* Header */}
       {Movie && (
         <MainImage

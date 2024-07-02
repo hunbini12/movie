@@ -3,7 +3,6 @@ import Detail from "./Detail/Detail";
 import Footer from "./Footer/Footer";
 import Items from "./Items/Items";
 import LandingPage from "./LandingPage/LandingPage";
-import NavBar from "./NavBar/NavBar";
 
 function App() {
   return (
